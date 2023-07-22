@@ -129,9 +129,6 @@ export const Products = () => {
                         &#8377;{data.price}
                       </span>
                     </div>
-                    <button className="cursor-pointer p-2 bg-[#e8f6ea] rounded-full transition-all hover:scale-125 duration-300">
-                      <FaShoppingCart className="text-xl text-[#088178]" />
-                    </button>
                   </div>
                 </div>
                 <div className='flex justify-around mt-3'>
