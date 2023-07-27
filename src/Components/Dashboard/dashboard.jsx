@@ -4,8 +4,6 @@ import { Route, Routes } from 'react-router-dom'
 import { Products } from './Products';
 import { Orders } from './Orders';
 import { Customers } from './Customers';
-import { Statistics } from './Statistics';
-import { Review } from './Review';
 import { Transaction } from './Transaction';
 import { Seller } from './Seller';
 import { Home } from './Home';
@@ -37,8 +35,6 @@ export const Dashboard = () => {
         <Route path='/transactiondetail/:id' element={<TransactionDetail />} />
         <Route path='/orders' element={<Orders />} />
         <Route path='/customers' element={<Customers />} />
-        <Route path='/statistics' element={<Statistics />} />
-        <Route path='/reviews' element={<Review />} />
         <Route path='/transaction' element={<Transaction />} />
         <Route path='/sellers' element={<Seller />} />
       </Routes>

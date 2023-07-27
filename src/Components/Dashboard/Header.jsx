@@ -11,17 +11,6 @@ export const Header = () => {
           <ImSearch className='text-slate-400' />
           <input type="text" placeholder='Search' className='w-[500px] p-3 outline-none' />
         </div>
-        <div className='flex justify-center items-center gap-4'>
-          <div className='text-3xl'>
-            <MdOutlineLightMode />
-          </div>
-          <div className='text-3xl'>
-            <IoNotifications />
-          </div>
-          <div className='text-3xl'>
-            Profile
-          </div>
-        </div>
       </div>
     </div>
   )

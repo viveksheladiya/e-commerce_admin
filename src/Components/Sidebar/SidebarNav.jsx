@@ -5,7 +5,6 @@ import { BiSolidDashboard } from 'react-icons/bi';
 import { BsPeopleFill } from 'react-icons/bs';
 import { FaShoppingCart } from 'react-icons/fa';
 import { FaMoneyBills } from 'react-icons/fa6'
-import { MdBarChart, MdRateReview } from 'react-icons/md';
 import { GiMeshBall } from 'react-icons/gi'
 import { AiFillProject } from 'react-icons/ai'
 
@@ -21,8 +20,6 @@ export const SidebarNav = () => {
           <NavLink to='/products'><AiFillProject />Products</NavLink>
           <NavLink to='/orders'><FaShoppingCart />Orders</NavLink>
           <NavLink to='/customers' ><BsPeopleFill />Customers</NavLink>
-          <NavLink to='/statistics'><MdBarChart />Statistics</NavLink>
-          <NavLink to='/reviews'><MdRateReview />Reviews</NavLink>
           <NavLink to='/transaction'><FaMoneyBills />Transaction</NavLink>
           <NavLink to='/sellers'><GiMeshBall />Sellers</NavLink>
         </div>

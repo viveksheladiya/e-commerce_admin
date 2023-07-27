@@ -1,6 +1,5 @@
 const express = require('express');
 const multer = require('multer');
-const path = require('path');
 
 const { getcustomer, addcustomer, deletecustomer, editcustomer, getupdatecustomer, searchcustomer } = require('../controllers/customer.controller');
 
