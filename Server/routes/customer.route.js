@@ -23,4 +23,4 @@ router.post("/addcustomer", upload.single('image'), addcustomer);
 router.put("/updatecustomer/:id", editcustomer);
 router.delete("/deletecustomer/:id", deletecustomer);
 
-module.exports = router;
+module.exports = router;    
