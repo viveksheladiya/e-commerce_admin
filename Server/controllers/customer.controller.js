@@ -20,7 +20,7 @@ exports.addcustomer = async (req, res) => {
         const response = await result.save();
         res.json(response);
     } catch (error) {
-        res.status(500).json({ message: 'Failed to add product', err: err.message });
+        res.status(500).json({ message: 'Failed to add Customer', err: err.message });
     }
 }
 
