@@ -12,7 +12,7 @@ export const Home = () => {
           </div>
           <div className='flex flex-col items-start'>
             <span className='text-slate-300'>Total Order</span>
-            <span className='font-bold text-xl'>1000</span>
+            <span className='font-bold text-xl'>100</span>
           </div>
         </div>
         <div className='bg-white w-1/2 flex flex-row p-3 items-center gap-4'>
@@ -21,7 +21,7 @@ export const Home = () => {
           </div>
           <div className='flex flex-col items-start'>
             <span className='text-slate-300'>Total Sales</span>
-            <span className='font-bold text-xl'>&#8377; 1000000</span>
+            <span className='font-bold text-xl'>&#8377; 10000</span>
           </div>
         </div>
         <div className='bg-white w-1/2 flex flex-row p-3 items-center gap-4'>
