@@ -16,6 +16,7 @@ import { AddSeller } from './AddSeller';
 import { AddOrder } from './AddOrder';
 import { UpdateOrder } from './UpdateOrder';
 import { TransactionDetail } from './TransactionDetail';
+import { Review } from './Review';
 
 export const Dashboard = () => {
   return (
@@ -35,6 +36,7 @@ export const Dashboard = () => {
         <Route path='/transactiondetail/:id' element={<TransactionDetail />} />
         <Route path='/orders' element={<Orders />} />
         <Route path='/customers' element={<Customers />} />
+        <Route path='/review' element={<Review/>} />
         <Route path='/transaction' element={<Transaction />} />
         <Route path='/sellers' element={<Seller />} />
       </Routes>

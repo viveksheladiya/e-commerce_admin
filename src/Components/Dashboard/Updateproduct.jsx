@@ -6,7 +6,6 @@ export const Updateproduct = () => {
   const [title, setTitle] = useState("");
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
-  const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
   const params = useParams();
 
@@ -16,14 +15,13 @@ export const Updateproduct = () => {
     setTitle(result.title);
     setBrand(result.brand);
     setCategory(result.category);
-    setQuantity(result.quantity);
     setPrice(result.price);
   }
 
   const handleUpdateproduct = async () => {
     let response = await fetch(`http://localhost:8080/api/product/updateproduct/${params.id}`, {
       method: "PUT",
-      body: JSON.stringify({ title, brand, category, quantity, price }),
+      body: JSON.stringify({ title, brand, category, price }),
       headers: {
         'Content-type': 'application/json'
       }
@@ -57,10 +55,6 @@ export const Updateproduct = () => {
             <div className='flex flex-col gap-2 mb-2'>
               <label htmlFor="category">Product Category:</label>
               <input type="text" placeholder="Category" name="category" value={category} onChange={(e) => setCategory(e.target.value)} className='w-[400px] h-9 border rounded-lg outline-none pl-3' />
-            </div>
-            <div className='flex flex-col gap-2 mb-2'>
-              <label htmlFor="quantity">Product Quantity:</label>
-              <input type="number" placeholder='Quantity' name="quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)} className='w-[400px] h-9 border rounded-lg outline-none pl-3' />
             </div>
             <div className='flex flex-col gap-2 mb-4'>
               <label htmlFor="price">Product Price:</label>

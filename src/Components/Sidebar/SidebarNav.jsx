@@ -6,6 +6,7 @@ import { BsPeopleFill } from 'react-icons/bs';
 import { FaShoppingCart } from 'react-icons/fa';
 import { FaMoneyBills } from 'react-icons/fa6'
 import { GiMeshBall } from 'react-icons/gi'
+import { MdReviews } from 'react-icons/md'
 import { AiFillProject } from 'react-icons/ai'
 
 export const SidebarNav = () => {
@@ -20,6 +21,7 @@ export const SidebarNav = () => {
           <NavLink to='/products'><AiFillProject />Products</NavLink>
           <NavLink to='/orders'><FaShoppingCart />Orders</NavLink>
           <NavLink to='/customers' ><BsPeopleFill />Customers</NavLink>
+          <NavLink to='/review'><MdReviews />Review</NavLink>
           <NavLink to='/transaction'><FaMoneyBills />Transaction</NavLink>
           <NavLink to='/sellers'><GiMeshBall />Sellers</NavLink>
         </div>

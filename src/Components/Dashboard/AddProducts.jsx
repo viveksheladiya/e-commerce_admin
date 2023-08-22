@@ -6,7 +6,6 @@ export const AddProducts = () => {
     const [title, setTitle] = useState("");
     const [brand, setBrand] = useState("");
     const [category, setCategory] = useState("");
-    const [quantity, setQuantity] = useState("");
     const [price, setPrice] = useState("");
     const [image, setImage] = useState(null);
 
@@ -24,7 +23,6 @@ export const AddProducts = () => {
         formdata.append('title', title);
         formdata.append('brand', brand);
         formdata.append('category', category);
-        formdata.append('quantity', quantity);
         formdata.append('price', price);
         formdata.append('image', image);
 
@@ -64,10 +62,6 @@ export const AddProducts = () => {
                         <div className='flex flex-col gap-2 mb-2'>
                             <label htmlFor="category">Product Category:</label>
                             <input type="text" placeholder="Category" name="category" value={category} onChange={(e) => setCategory(e.target.value)} className='w-[400px] h-9 border rounded-lg outline-none pl-3' />
-                        </div>
-                        <div className='flex flex-col gap-2 mb-2'>
-                            <label htmlFor="quantity">Product Quantity:</label>
-                            <input type="number" placeholder='Quantity' name="quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)} className='w-[400px] h-9 border rounded-lg outline-none pl-3' />
                         </div>
                         <div className='flex flex-col gap-2 mb-4'>
                             <label htmlFor="price">Product Price:</label>

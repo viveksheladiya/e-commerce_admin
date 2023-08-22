@@ -1,6 +1,6 @@
 const Product = require('../Model/Product');
 const Stripe = require('stripe');
-const stripe = Stripe('sk_test_51NUio7SFp5okCFuJpQCXZnoT6rZ4MIB19BMr222tlBOrF60AhyVgvcABzISlgNbhVSN0vfUEB0rv8TYKKXW43z0I00sjnw9vX6')
+const stripe = Stripe('sk_test_51NUio7SFp5okCFuJpQCXZnoT6rZ4MIB19BMr222tlBOrF60AhyVgvcABzISlgNbhVSN0vfUEB0rv8TYKKXW43z0I00sjnw9vX6');
 
 exports.getProduct = async (req, res) => {
     let result = await Product.find({});
@@ -8,13 +8,12 @@ exports.getProduct = async (req, res) => {
 }
 
 exports.addproduct = async (req, res) => {
-    const { title, brand, category, quantity, price } = req.body;
+    const { title, brand, category, price } = req.body;
     const image = req.file ? req.file.filename : '';
     let result = new Product({
         title,
         brand,
         category,
-        quantity,
         price,
         image,
     });
@@ -65,11 +64,11 @@ exports.stripepayment = async (req, res) => {
                 currency: 'inr',
                 product_data: {
                     name: item.brand,
-                    description: item.title
+                    description: item.title,
                 },
-                unit_amount: item.price * 100,
+                unit_amount: item.price * item.cartQuantity * 100,
             },
-            quantity: item.amount,
+            quantity: 1,
         }
     })
     const session = await stripe.checkout.sessions.create({
@@ -126,8 +125,8 @@ exports.stripepayment = async (req, res) => {
         },
         line_items,
         mode: 'payment',
-        success_url: 'http://localhost:3001/success',
-        cancel_url: 'http://localhost:3001/cart',
+        success_url: 'http://localhost:3000/success',
+        cancel_url: 'http://localhost:3000/cart',
     });
 
     res.send({ url: session.url })
