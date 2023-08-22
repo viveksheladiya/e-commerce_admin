@@ -38,7 +38,7 @@ exports.getupdateproduct = async (req, res) => {
     if (result) {
         res.send(result);
     } else {
-        res.send({})
+        res.send({});
     }
 }
 
@@ -68,7 +68,7 @@ exports.stripepayment = async (req, res) => {
                 },
                 unit_amount: item.price * item.cartQuantity * 100,
             },
-            quantity: 1,
+            quantity: item.cartQuantity,
         }
     })
     const session = await stripe.checkout.sessions.create({
@@ -125,8 +125,8 @@ exports.stripepayment = async (req, res) => {
         },
         line_items,
         mode: 'payment',
-        success_url: 'http://localhost:3000/success',
-        cancel_url: 'http://localhost:3000/cart',
+        success_url: 'http://localhost:3001/success',
+        cancel_url: 'http://localhost:3001/cart',
     });
 
     res.send({ url: session.url })

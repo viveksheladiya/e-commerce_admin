@@ -16,7 +16,7 @@ exports.loginUser = async (req, res) => {
             res.send("No User Found..");
         }
     } else {
-        res.send("No User Found..");
+        res.send("No User Found...");
     }
 }
 
@@ -57,7 +57,23 @@ exports.getCart = async (req, res) => {
     }
 };
 
-exports.deleteProduct = async (req, res) => {
-    let result = await userDetail.deleteOne({ _id: req.params.id });
-    res.send(result);
+exports.deleteProduct = (req, res) => {
+    const userId = req.params.id;
+    console.log(userId);
+
+    userDetail.findByIdAndUpdate(
+        userId,
+        { $pull: { cart: req.body.id } },
+        { new: true },
+    )
+        .then(user => {
+            if (!user) {
+                return res.status(404).json({ error: "User not found" });
+            }
+            res.json(user);
+        })
+        .catch(error => {
+            console.error(error);
+            res.status(500).json({ error: "Internal Server Error" });
+        });
 }
