@@ -6,7 +6,7 @@ exports.loginUser = async (req, res) => {
     if (req.body.email && req.body.password) {
         let user = await userDetail.findOne(req.body).select('-password');
         if (user) {
-            Jwt.sign({ user }, jwtkey, { expiresIn: "10d" }, (err, token) => {
+            Jwt.sign({ uid: user._id }, jwtkey, { expiresIn: "10d" }, (err, token) => {
                 if (err) {
                     res.send('Something Went Wrong');
                 }
@@ -34,7 +34,7 @@ exports.registerUser = async (req, res) => {
 }
 
 exports.addToCart = async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body.pid);
     const productAdd = await userDetail.updateOne({ _id: req.body.uid }, {
         $addToSet: { cart: req.body.pid }
     })
@@ -51,29 +51,20 @@ exports.getCart = async (req, res) => {
         .findOne({ _id: userId })
         .populate('cart');
     if (data) {
-        return res.send({ code: 200, message: "Success", data: data.cart });
+        return res.send({ code: 200, message: "Success", data: data });
     } else {
         return res.send({ code: 500, message: "Something Went Wrong." });
     }
 };
 
-exports.deleteProduct = (req, res) => {
-    const userId = req.params.id;
-    console.log(userId);
-
-    userDetail.findByIdAndUpdate(
-        userId,
-        { $pull: { cart: req.body.id } },
-        { new: true },
-    )
-        .then(user => {
-            if (!user) {
-                return res.status(404).json({ error: "User not found" });
-            }
-            res.json(user);
-        })
-        .catch(error => {
-            console.error(error);
-            res.status(500).json({ error: "Internal Server Error" });
-        });
+exports.deleteProduct = async (req, res) => {
+    try {
+        const userId = req.userId;
+        const prodId = req.params.id;
+        await userDetail.findByIdAndUpdate(userId, { $pull: { cart: prodId } },
+            { new: true })
+            return res.status(200).send("Cart updated")
+    } catch (error) {
+        return res.status(500).send("internal server error")
+    }
 }

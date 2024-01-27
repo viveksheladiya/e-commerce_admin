@@ -35,7 +35,7 @@ export const UpdateCustomer = () => {
 
     useEffect(() => {
         getCustomerData();
-    }, [])
+    })
 
     return (
         <div className='w-full'>

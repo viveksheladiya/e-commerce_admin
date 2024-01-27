@@ -66,7 +66,7 @@ exports.stripepayment = async (req, res) => {
                     name: item.brand,
                     description: item.title,
                 },
-                unit_amount: item.price * item.cartQuantity * 100,
+                unit_amount: item.price * 100,
             },
             quantity: item.cartQuantity,
         }
